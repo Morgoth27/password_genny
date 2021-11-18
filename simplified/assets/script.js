@@ -9,11 +9,9 @@ var allTogether = symbols.concat(numbers, lowerLetters, upperLetters);
 
 // console.log(allTogether); - It worked!!
 
-
  // for this function we need to build a string, because it is random letters and #s
  function generatePassword() {
   var genPass = ""
-  var passLen = 8
   for (var i = 0; i < 9; i++) {
     var randomValue = allTogether[Math.floor(Math.random() * allTogether.length)]
     genPass += (randomValue, randomValue);
