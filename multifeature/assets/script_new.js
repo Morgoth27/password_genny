@@ -7,7 +7,7 @@ var lowerLetters = ["a","b","c","d","e","f","h","i","j","k","l","m","n","o","p",
 var upperLetters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
 var allTogether = symbols.concat(numbers, lowerLetters, upperLetters);
 
-// console.log(allTogether); - It worked!!
+
 function askPasswordCriteria () {
   var length = parseInt(
     prompt('How long would you like your password to be?')
@@ -16,6 +16,7 @@ function askPasswordCriteria () {
   if(length<8 || length>128) { 
     alert('Password length must be between 8 and 128 characters'),
     then (location.reload())
+    // page will reload if password is not within these bounds
   }
 
   var containSymbols = confirm(
@@ -38,7 +39,7 @@ function askPasswordCriteria () {
     alert('Must select at least one character type');
     return null;
   }
-
+//tutor helped me with this part below, with colon
   var passwordCriteria ={
     length: length,
     containSymbols: containSymbols,
@@ -94,7 +95,7 @@ function randomCharacter (arr) {
 
   for (var i=0; i<guaranteedChoices.length; i++) {
     genPass[i] = guaranteedChoices[i];
-    
+
   }
   return genPass.join('');
 
