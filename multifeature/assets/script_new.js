@@ -13,8 +13,9 @@ function askPasswordCriteria () {
     prompt('How long would you like your password to be?')
   )
 
-  if(length<8 || length>128) {
-    alert('Password length must be between 8 and 128 characters')
+  if(length<8 || length>128) { 
+    alert('Password length must be between 8 and 128 characters'),
+    then (location.reload())
   }
 
   var containSymbols = confirm(
@@ -63,38 +64,41 @@ function randomCharacter (arr) {
   var options = askPasswordCriteria();
   var genPass = []
 
-  var chracterChoices = [];
-  var guranteedChoices = [];
+  var characterChoices = [];
+  var guaranteedChoices = [];
 
   if(options.containLowercase) {
-    chracterChoices = chracterChoices.concat(lowerLetters);
-    guranteedChoices.push(randomCharacter(lowerLetters))
+    characterChoices = characterChoices.concat(lowerLetters);
+    guaranteedChoices.push(randomCharacter(lowerLetters))
   }
 
   if(options.containUppercase) {
-    chracterChoices = chracterChoices.concat(upperLetters);
-    guranteedChoices.push(randomCharacter(upperLetters))
+    characterChoices = characterChoices.concat(upperLetters);
+    guaranteedChoices.push(randomCharacter(upperLetters))
   }
 
   if(options.containSymbols) {
-    chracterChoices = chracterChoices.concat(symbols);
-    guranteedChoices.push(randomCharacter(symbols))
+    characterChoices = characterChoices.concat(symbols);
+    guaranteedChoices.push(randomCharacter(symbols))
   }
 
   if(options.containNumbers) {
-    chracterChoices = chracterChoices.concat(numbers);
-    guranteedChoices.push(randomCharacter(numbers))
+    characterChoices = characterChoices.concat(numbers);
+    guaranteedChoices.push(randomCharacter(numbers))
   }
 
   for (var i = 0; i < options.length; i++) {
-    var possibleCharacter = randomCharacter(chracterChoices)
+    var possibleCharacter = randomCharacter(characterChoices)
     genPass.push(possibleCharacter)    
   }
 
-  for(var i=0; i<guranteedChoices.length; i++) {
-    genPass[i] = guranteedChoices[i];
+  for (var i=0; i<guaranteedChoices.length; i++) {
+    genPass[i] = guaranteedChoices[i];
+    
   }
   return genPass.join('');
+
+  
 }
 
 // Write password to the #password input
